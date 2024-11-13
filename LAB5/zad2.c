@@ -1,79 +1,61 @@
 //Jan Czechowski
 #include <stdio.h>
 
-// Globalna zmienna 'a', która ma wartość 8
 int a = 8;
 
-// Funkcja pomocnicza do wyświetlania wartości zmiennej 'a' w różnych blokach
 void info(char *nazwa_bloku, int zmienna) {
-    printf("W bloku %s zmienna a = %d\n", nazwa_bloku, zmienna);
+    printf("W bloku %s zmienna a = %d\n", nazwa_bloku, zmienna);    //Zwracanie wartosci zmiennej 'a' powiązanej z nazwą bloku
 }
 
-// Funkcja, która wyświetla wartość globalnej zmiennej 'a'
 void funkcja() {
-    info("funkcji", a); // Wypisuje: "W bloku funkcji zmienna a = 8"
+    info("funkcji", a);
 }
 
-// Funkcja obliczająca sumę dwóch liczb
 int suma(int x, int y) {
     return x + y;
 }
 
-// Funkcja sprawdzająca, czy liczba jest parzysta
 void czy_parzysta(const int);
 
-// Funkcja zwiększająca wartość liczby o 1 i zwracająca wynik
 int liczba_zwiekszona(int x) {
     return ++x;
 }
 
-// Funkcja, która próbuje zwiększyć wartość 'a', ale bez trwałego efektu
 void zwieksz_liczbe(int a) {
-    ++a; // Zwiększa tylko lokalną kopię zmiennej 'a'
+    ++a;
 }
 
-// Funkcja zwiększająca wartość zmiennej przez wskaźnik
 void zwieksz_przez_adres(int* x) {
-    (*x)++; // Zwiększa wartość zmiennej, na którą wskazuje wskaźnik
+    (*x)++;
 }
 
 int main() {
-    // Lokalna zmienna 'a' w 'main', która ma wartość 20
     int a = 20;
 
-    // Wyświetlanie wartości lokalnej zmiennej 'a' w 'main'
-    info("main", a); // Wypisuje: "W bloku main zmienna a = 20"
-
-    // Wywołanie funkcji, która wyświetla wartość globalnej zmiennej 'a'
+    info("main", a);
     funkcja();
 
-    // Obliczenie sumy dwóch liczb
     int b = 9;
     int wynik = suma(a, b);
-    printf("\na + b = %d\n\n", wynik); // Wypisuje: "a + b = 29"
 
-    // Sprawdzenie, czy liczby 'a' i 'b' są parzyste
-    czy_parzysta(a); // Wypisuje: "Liczba 20 jest parzysta!"
-    czy_parzysta(b); // Wypisuje: "Liczba 9 jest nieparzysta!"
+    printf("\na + b = %d\n\n", wynik);  // Wypisuje: sume 'a' i 'b' przy uzyciu funkcji suma
 
-    // Zwiększenie wartości 'a' o 1 i wyświetlenie wyniku
-    printf("\na + 1 = %d\n", liczba_zwiekszona(a)); // Wypisuje: "a + 1 = 21"
+    czy_parzysta(a);
+    czy_parzysta(b);
 
-    // Próba zwiększenia wartości 'a' (bez efektu)
-    zwieksz_liczbe(a);
-    printf("Zmienna 'a' po wywolaniu zwieksz_liczbe = %d\n", a); // Wypisuje: "20"
+    printf("\na + 1 = %d\n", liczba_zwiekszona(a));     // Zwiększenie wartości 'a' o 1 przy uzyciu funkcji 'liczba_zwiekszona' i wyświetlenie wyniku
+    zwieksz_liczbe(a);  //Próba zwiekszenia lokalnej wartosci 'a' przez funkcje 'zwieksz_liczbe'
+    printf("Zmienna 'a' po wywolaniu zwieksz_liczbe = %d\n", a);    //'a' w funkcji main sie nie zmienia, wiec wypisuje "20"
 
-    // Zwiększenie wartości 'a' przez wskaźnik (z trwałym efektem)
-    zwieksz_przez_adres(&a);
-    printf("Zmienna 'a' po zwieksz_przez_adres = %d\n", a); // Wypisuje: "21"
+    zwieksz_przez_adres(&a);    //zwiekszenie 'a' przy uzyciu wskaznika, wiec zmienna 'a' w funckji main sie zwieksza
+    printf("Zmienna 'a' po zwieksz_przez_adres = %d\n", a);     //wypisuje zwiekszone 'a' rowne 21
 
     return 0;
 }
 
-// Funkcja sprawdzająca, czy liczba jest parzysta
 void czy_parzysta(const int x) {
     if(x % 2 == 0)
-        printf("Liczba %d jest parzysta!\n", x);
+        printf("Liczba %d jest parzysta!\n", x);    //sprawdzanie czy liczba jest parzysta poprzez sprawdzanie czy reszta z dzielenia przez 2 jest rowna 0 i wypisywanie komunikatu o parzystosci liczby
     else
-        printf("Liczba %d jest nieparzysta!\n", x);
+        printf("Liczba %d jest nieparzysta!\n", x);     //jesli liczba jest nieparzysta to wypisuje komunikat ze liczba jest nieparzysta
 }

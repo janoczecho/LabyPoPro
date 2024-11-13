@@ -1,3 +1,4 @@
+//Jan Czechowski
 #include <stdio.h>
 
 // Globalna zmienna 'a', która ma wartość 8

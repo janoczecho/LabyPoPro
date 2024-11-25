@@ -82,7 +82,7 @@ int main()
     char *h = (char*)array2D_stat;
     h[5] = 2;
     printf("Element array2D_stat[0][1] is now: %d\n", array2D_stat[0][1]);
-
+	// Wynik printf pokazuje zmodyfikowaną wartość array2D_stat[0][1] po zmianie najmniej znaczącego bajtu tej wartości za pomocą wskaźnika char*, co powoduje zmianę wartości całej liczby całkowitej z powodu sposobu przechowywania liczb całkowitych w pamięci.
     free(array2D_dyn);
 
     return 0;
